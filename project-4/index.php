@@ -152,7 +152,7 @@
       const amountOne = document.getElementById("amount-one");
       const amountTwo = document.getElementById("amount-two");
 
-      const rate = document.getElementById("rate");
+      const rateEl = document.getElementById("rate");
       const swap = document.getElementById("swap");
 
 
@@ -166,11 +166,11 @@
             .then(res => res.json())
             .then(data => {
               // console.log(data);
-              const rate = data.rates[currTwo];
+              const rate = data.conversion_rates[currTwo];
 
-              rate.innerText = `1 ${currOne} = ${rate} ${currTwo}`;
+              rateEl.innerText = `1 ${currOne} = ${rate} ${currTwo}`;
 
-              amountTwo.value = (amountOne.value * rate)toFixed(2);
+              amountTwo.value = (amountOne.value * rate).toFixed(2);
             });
       }
 
@@ -179,13 +179,15 @@
       amountOne.addEventListener("input", calculate);
       currencyTwo.addEventListener("change", calculate);
       amountTwo.addEventListener("input", calculate);
-      
+
       swap.addEventListener("click", () => {
         const temp = currencyOne.value;
         currencyOne.value = currencyTwo.value;
         currencyTwo.value = temp;
         calculate();
       });
+
+      calculate();
     </script>
 </body>
 </html>
