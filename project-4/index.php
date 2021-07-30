@@ -165,7 +165,12 @@
           fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${currOne}`)
             .then(res => res.json())
             .then(data => {
-              console.log(data);
+              // console.log(data);
+              const rate = data.rates[currTwo];
+
+              rate.innerText = `1 ${currOne} = ${rate} ${currTwo}`;
+
+              amountTwo.value = (amountOne.value * rate)toFixed(2);
             });
       }
 
@@ -174,6 +179,13 @@
       amountOne.addEventListener("input", calculate);
       currencyTwo.addEventListener("change", calculate);
       amountTwo.addEventListener("input", calculate);
+      
+      swap.addEventListener("click", () => {
+        const temp = currencyOne.value;
+        currencyOne.value = currencyTwo.value;
+        currencyTwo.value = temp;
+        calculate();
+      });
     </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+// This project is strictly an html, css and javascript project.
+// However, the API that I used now requires for you to sign up 
+// for a private API key.
+// Therefore, to make things easier, I just changed the index 
+// file from an html file into a php file. That way, I could  
+// store my private API key into a php variable located in a 
+// seperate config.php file.
+// See setup below:
+
+
+/* // Create php variable for private API key
+// In seprate config.php file
+$apiKey = "<your API Key>"; // minus the angle brackets
+
+// Make sure to include or require your config.php file at the
+// Very top of your index.php file before all HTML code like so:
+<?php
+  require 'config.php';
+?>
+
+// Store the php variable in a javascript variable as a string
+const apiKey = "<?php echo $apiKey; ?>";
+
+// Now you can use the javacript variable, containing the php
+// Variable, directly in an HTML template string like so:
+
+fetch(`https://someapiendpoint.com/${apiKey}`) //example site
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    });
+
+// Remember that all php and javascript code needs to be
+// Embedded into your HTML, just like in this project, in
+// Order to work */
